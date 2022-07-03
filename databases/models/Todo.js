@@ -2,7 +2,7 @@ import { TABLE_TODO, SEQUELIZE } from '@databases/db';
 import { DataTypes } from 'sequelize';
 
 
-const Todo = SEQUELIZE.define(TABLE_TODO, {
+const Todo = SEQUELIZE.define('Todo', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -10,7 +10,7 @@ const Todo = SEQUELIZE.define(TABLE_TODO, {
         allowNull: false,
         unique: true,
     },
-    name: {
+    todo: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true
@@ -21,9 +21,11 @@ const Todo = SEQUELIZE.define(TABLE_TODO, {
     },
     createdAt: {
         type: DataTypes.DATE(3),
-        defaultValue: SEQUELIZE.literal('CURRENT_TIMESTAMP(3)'),
+        defaultValue: SEQUELIZE.literal('CURRENT_TIMESTAMP'),
     },
     updatedAt: false
+}, {
+    tableName: TABLE_TODO
 });
 
 export default Todo
